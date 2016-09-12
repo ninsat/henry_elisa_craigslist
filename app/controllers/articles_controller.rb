@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-	def index
-		@articles = Article.all
+	def index 
+		redirect_to root_path
 	end
 
 	def new
@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
 		if article.save
 			redirect_to article_path(article.id)
 		else
+			@errors = article.errors.full_messages
 			render 'new'
 		end
 	end

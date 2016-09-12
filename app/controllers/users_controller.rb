@@ -13,7 +13,8 @@ class UsersController < ApplicationController
 		  session[:user_id] = user.id 
 		  redirect_to categories_path
 		else
-			render new_session_path
+			@errors = user.errors.full_messages
+			render 'new'
 		end
 	end
 
