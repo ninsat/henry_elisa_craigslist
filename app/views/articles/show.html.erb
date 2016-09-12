@@ -1,0 +1,11 @@
+<h1>Posted Article:</h1>
+
+	<h3><%= @article.title %></h3>
+	<%= @article.description %><br>
+	$<%= @article.price %><br>
+	<%= @article.condition %><br>
+	<%= @article.location %><br>
+	Listed by: <%= @user.username %>
+	<% if logged_in? %>
+	Contact information: <%= @user.email %>
+	<% end %>
