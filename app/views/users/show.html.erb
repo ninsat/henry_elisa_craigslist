@@ -1,0 +1,12 @@
+<h1>HELLO <%= @user.username %></h1>
+
+Items you've listed:<br>
+<% if @articles %>
+	<ul>
+	<% @articles.each do |article| %>
+	<li><%= link_to article.title, article_path(article.id) %></li>
+	<% end%>
+	</ul>
+<% else %>
+You haven't listed any items for sale! Get rid of your junk!
+<% end %>

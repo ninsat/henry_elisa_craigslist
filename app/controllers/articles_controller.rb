@@ -28,12 +28,28 @@ class ArticlesController < ApplicationController
 	end
 
 	def edit
+		require_user
+		@article = Article.find(params[:id])
 	end
 
 	def update
+		require_user
+		@article = Article.find(params[:id])
+		if @article.update_attributes(article_params)
+			redirect_to @article
+		else
+			@errors = @article.errors.full_messages
+			render 'edit'
+		end
 	end
 
 	def destroy
+		require_user
+		article = Article.find(params[:id])
+		if current_user.id == article.user_id		
+		article.destroy
+		redirect_to categories_path
+		end
 	end
 
 	private
